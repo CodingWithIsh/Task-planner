@@ -23,48 +23,18 @@
       <div class="background"></div>
       <div class="row">
           <div class="col" id="col2">
-            <div class="stickynotes">
-            <ul>
-              <li>
-                <a href="#" contenteditable>
-                  <h2>Task 1</h2>
-                  <p></p>
-                </a>
-              </li>
-              <li>
-                <a href="#" contenteditable>
-                  <h2>Task 2</h2>
-                  <p>help mum</p>
-                </a>
-              </li>
-              <li>
-                <a href="#" contenteditable>
-                  <h2>Task 3</h2>
-                  <p></p>
-                </a>
-              </li>
-              <li>
-                <a href="#" contenteditable>
-                  <h2>Task 4</h2>
-                  <p></p>
-                </a>
-              </li>
-              <li>
-                <a href="#" contenteditable>
-                  <h2>Task 5 </h2>
-                  <p></p>
-                </a>
-              </li>
+            <div class="container" style="width: 50vw;">
+            <ul id="stickynotes">
             </ul>
+            </div>
           </div>
-        </div>
           <div class="col" id="col1">
             <div class="container">
                 <div class="row"><div class="col"></div><div class="col"><img src="logo.svg" alt=""></div><div class="col"></div></div>
                 <div id="error">
 
                 </div>
-              <form action="/" method="GET" id="form">                 
+              <form method="GET" id="form">                 
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" placeholder="Enter name">
                
@@ -72,8 +42,8 @@
                     <label for="Description">Description</label>
                     <input type="text" class="form-control" id="Description" placeholder="Enter Description">
               
-                  <label for="Tdate">Todays date:</label>
-                  <input type="date" data-uk-datepicker="{format:'DD.MM.YYYY'}" style="width: 550px; margin-bottom: 10px;">
+                  <label for="dueDate">Due date:</label>
+                  <input id="dueDate" type="date" data-uk-datepicker="{format:'DD.MM.YYYY'}" style="width: 500px; margin-bottom: 10px;">
 
                  
                   <label for="Assigned">Assigned to</label>
@@ -90,9 +60,9 @@
 
                   
               </form>
-                <button type="submit" class="button" form="form" style="left:0%;">
-                  <a href="#">Orga-nice</a>
-                </button>
+              <button onclick="add()" id="buttonid" type="button" class="button" form="form" style="left:0%; width: 400px;">
+                  Orga-nice
+              </button>
 
 
             </div>
@@ -101,8 +71,12 @@
           <div class="col">
 
           </div>
-      </div>
-      
+          <div class="row">
+            <div class="container">
+            <h1 marg>Extra Tasks</h1>
+          </div>
+          </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
