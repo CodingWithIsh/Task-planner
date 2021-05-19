@@ -52,6 +52,7 @@ class Task {
     } else{
         alert("No more notes")
     }
+
     }
 }
 
@@ -127,9 +128,4 @@ function add(){
 //     submittedTasks = JSON.parse(cardsListStorage)
 //     TaskManager.cardIds = JSON.parse(cardIdsStorage)
 //     TaskManager.add()
-// }
-
-// for(i in cardsListStorage){
-//     console.log(cardsListStorage)
-//     cardsListStorage[i].fillPostItNote()
 // }
