@@ -5,19 +5,21 @@
 // let error1 = document.getElementById("error");
 if(!localStorage.getItem("submittedTasks")){
     localStorage.setItem("submittedTasks","[]")
+    localStorage.setItem("IDs","0")
 }
+
 
 // updatelocalstorage() {
 //     localStorage.setItem("cardsList",JSON.stringify(TaskManager.cardsList))
 //     localStorage.setItem("cardIds",JSON.stringify(TaskManager.cardIds))
 // }
 
-
-let taskNumber = 1
+let tasks = JSON.parse(localStorage.getItem("submittedTasks"));
+let taskNumber = JSON.parse(localStorage.getItem("IDs"));
 let postits = 0
+// let TaskManager = {}
 
-
-class Task {
+class TaskClass {
     constructor(name, description, date, assignedTo, status) {
       this.id = taskNumber
       this.name = name;
@@ -27,34 +29,52 @@ class Task {
       this.taskStatus = status;
     }
 
-    fillPostItNote(){
-        let postItNote = document.createElement("li")
-        postItNote.innerHTML = `              
-            <a href="#" contenteditable>
-            <h2>Task ${this.id}</h2>
-            <p>Name: ${this.name}<br>
-            Due date: ${this.duedate}<br>
-            Assigned to: ${this.assigned}<br>
-            Status: ${this.taskStatus}<br></p>
-            <p id="desc">Description: ${this.description}</p>
-            </a>
-      `
-      console.log(postItNote, document.getElementById("stickynotes"))
-
-
-      if(postits<8){document.getElementById("stickynotes").appendChild(postItNote);
-    } else if(postits<10){
-        document.getElementById("stickynotes3").appendChild(postItNote);
-
-    } else if(postits<18){
-        document.getElementById("stickynotes2").appendChild(postItNote);
-
-    } else{
-        alert("No more notes")
-    }
-
-    }
 }
+
+function deleteTask(taskId){
+    document.getElementById(taskId).remove()
+
+    
+}
+
+function fillPostItNote(task){
+    postits++
+    let postItNote = document.createElement("li")
+    postItNote.id = task.id
+    console.log(postItNote)
+    postItNote.innerHTML = `              
+        <a href="#" contenteditable>
+        <h2>Task ${postits}</h2>
+        <p>Name: ${task.name}<br>
+        Due date: ${task.duedate}<br>
+        Assigned to: ${task.assigned}<br>
+        Status: ${task.taskStatus}<br></p>
+        <p id="desc">Description: ${task.description}</p>
+        <button onclick="deleteTask(${task.id})"></button>
+        </a>
+    `
+
+
+
+    if(postits<=8){document.getElementById("stickynotes").appendChild(postItNote);
+} else if(postits<=10){
+    document.getElementById("stickynotes3").appendChild(postItNote);
+
+} else if(postits<=18){
+    document.getElementById("stickynotes2").appendChild(postItNote);
+
+} else{
+    
+}
+
+}
+
+function updateLocalStorage(){
+    localStorage.setItem('submittedTasks', JSON.stringify(tasks))
+    localStorage.setItem('IDs', JSON.stringify(taskNumber))
+}
+
+this.tasks
 
 let valid = false
 
@@ -62,26 +82,38 @@ function validateForm() {
 
   }
 
+function clearAllInputs(){
+    for(let inputkey in inputs){
+
+    }
+}
+
 function add(){
     let name = document.getElementById("name").value;
     let description = document.getElementById("Description").value;
     let assignedTo = document.getElementById("Assigned").value;
     let date = document.getElementById("dueDate").value;
     let status = document.getElementById("Status").value;
-    if ((name == "") || (name.length>20) || (description=="") || (description.length<20) || (assignedTo=="")|| (assignedTo.length>20) || (date.length<10) || (status=="") ){
-      alert("Please enter a valid form...\nName must not be empty and fewer than 20 characters\nDescription must not be empty and must not be fewer than 20 characters\nAssigned must not be empty and must be fewer than 20 characters\nDate and status must not be empty");
-      valid = false;
-    } else{
-        let task = new Task(name, description, date, assignedTo, status);
-        let tasks = JSON.parse(localStorage.getItem("submittedTasks"));
-        tasks.push(task)
-        localStorage.setItem("submittedTasks", JSON.stringify(tasks));
-        task.fillPostItNote()
+    if(postits>18){
+      alert("no more notes")
+    } else if((name == "") || (name.length>20) || (description=="") || (description.length<20) || (assignedTo=="")|| (assignedTo.length>20) || (date.length<10) || (status=="") ) {
+        alert("Please enter a valid form...\nName must not be empty and fewer than 20 characters\nDescription must not be empty and must not be fewer than 20 characters\nAssigned must not be empty and must be fewer than 20 characters\nDate and status must not be empty");
+    } else {
         taskNumber ++
-        postits++
+        let task = new TaskClass(name, description, date, assignedTo, status);
+        tasks.push(task)
+        updateLocalStorage()
+        localStorage.setItem("submittedTasks", JSON.stringify(tasks));
+        fillPostItNote(task)
     }
 
+
 }
+
+for(task of tasks){
+    fillPostItNote(task)
+}
+
 
 // function fillPostItNote(){
 //     let postItNote = document.createElement("div")
@@ -129,3 +161,9 @@ function add(){
 //     TaskManager.cardIds = JSON.parse(cardIdsStorage)
 //     TaskManager.add()
 // }
+
+function myfun() {
+    
+    submittedTasks.splice(this.id, 1);     
+
+}
