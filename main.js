@@ -38,7 +38,7 @@ function fillPostItNote(task, postits){
     console.log(postItNote)
     postItNote.innerHTML = `              
         <a href="#" contenteditable>
-        <button style=" position: absolute; margin-left: 150px;  background:transparent; width:30px; border-color:transparent;"onclick="deleteTask(${task.id})"><img src="redx.png" style="width:100%;"></button>
+        <button style=" position: absolute; margin-left: 6.9em;  background:transparent; width:30px; border-color:transparent;"onclick="deleteTask(${task.id})"><img src="redx.png" style="width:100%;"></button>
         <h2>Task ${postits}</h2>  
         <p>Name: ${task.name}<br>
         Due date: ${task.duedate}<br>
@@ -51,10 +51,7 @@ function fillPostItNote(task, postits){
 
 
     if(postits<=8){document.getElementById("stickynotes").appendChild(postItNote);
-} else if(postits<=10){
-    document.getElementById("stickynotes3").appendChild(postItNote);
-
-} else if(postits<=18){
+} else if(postits<=16){
     document.getElementById("stickynotes2").appendChild(postItNote);
 
 } else{
@@ -105,7 +102,6 @@ function add(){
 function displayAll(tasks){
     document.getElementById("stickynotes").innerHTML = ""
     document.getElementById("stickynotes2").innerHTML = ""
-    document.getElementById("stickynotes3").innerHTML = ""
     
     let postits = 1
     for (let key in tasks){
