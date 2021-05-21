@@ -10,6 +10,7 @@ if(!localStorage.getItem("submittedTasks")){
 let tasks = JSON.parse(localStorage.getItem("submittedTasks"));
 let taskNumber = JSON.parse(localStorage.getItem("IDs"));
 let postits = 1
+let noteCounter = 1
 displayAll(tasks)
     
 
@@ -30,6 +31,7 @@ function deleteTask(taskId){
     delete tasks[taskId]
     updateLocalStorage()
     displayAll(tasks)
+    noteCounter--
 }
 
 function fillPostItNote(task, postits){
@@ -85,7 +87,7 @@ function add(){
     let status = document.getElementById("Status").value;
     // getting tasks, and checking length
     
-    if(postits>18){
+    if(noteCounter>16){
       alert("no more notes")
     } else if((name == "") || (name.length>20) || (description=="") || (description.length<20) || (assignedTo=="")|| (assignedTo.length>20) || (date.length<10) || (status=="") ) {
         alert("Please enter a valid form...\nName must not be empty and fewer than 20 characters\nDescription must not be empty and must not be fewer than 20 characters\nAssigned must not be empty and must be fewer than 20 characters\nDate and status must not be empty");
@@ -95,6 +97,7 @@ function add(){
         tasks[taskNumber] = task
         updateLocalStorage() 
         displayAll(tasks)
+        noteCounter++
         
     }
 }
