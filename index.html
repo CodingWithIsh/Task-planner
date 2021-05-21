@@ -58,9 +58,15 @@
 
                 
             </form>
-            <button onclick="add(), validateForm()" id="buttonid" type="button" class="button" form="form">
+            <div class="buttons" style="display:flex; flex-direction: row;">
+              <button onclick="add(), validateForm()" id="buttonid" type="button" class="button" form="form">
                 Orga-nice
             </button>
+            <button onclick="clearAllTasks()" id="deletebuttonid" type="button" class="button" form="form" style="margin-left: 50px;">
+              Delete All
+          </button>
+            </div>
+           
             </div>
           </div>
           <div class="col" style="margin:0;">
