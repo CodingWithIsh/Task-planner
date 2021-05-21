@@ -1,17 +1,27 @@
 body{
-    background-color: rgb(90, 90, 90);
     background-image: url("http://www.osbornlondon.co.uk/wp-content/uploads/2015/09/home.jpg");
-    z-index: -2;
     height: 100vh;
+    min-height: 100vh;
     overflow-x: hidden;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+
+
 }
 
+
+.row{
+  word-wrap: break-word;
+  
+}
 :root{
     --ff-primary: 'Ubuntu', sans-serif;
     --ff-secondary: 'Montserrat', sans-serif;
+    --ff-pencil:'Quick Pencil', sans-serif;
 
     --fw-reg: 300;
     --fw-bold:900;
+    --fw-xbold:1500;
 
     --clr-light: rgb(255, 255, 255);
     --clr-dark: #1d1818;
@@ -30,12 +40,13 @@ body{
 }
 
 .background{
-    height: 200vh;
+    height: 100vh;
     width: 100vw;
     background-color: rgb(255, 255, 255);
     position: absolute;
-    opacity: 30%;
-    z-index: -2;
+    opacity: 50%;
+    background-repeat: no-repeat;
+    margin-bottom: 0;
 
 }
 
@@ -48,6 +59,8 @@ body{
     height: 100vh;
 }
 
+
+
 /* //Sticky notes */
 
   h2 {
@@ -55,14 +68,22 @@ body{
     font-size: 1rem;
     text-decoration: underline;
   }
+  #desc, p{
+    margin: 0;
+    line-height: normal;
+  }
+
   p {
-    font-family: 'Reenie Beanie';
-    font-size: 14px;
-    line-height: 0.3;
+    font-family: var(--ff-pencil);
+    font-size: 16px;
+    line-height: 1.4;
 
   }
   ul,li{
     list-style:none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
   }
   ul{
     display: flex;
@@ -70,12 +91,12 @@ body{
     justify-content: center;
   }
   ul li a{
-    text-decoration:none;
     color:#000;
     background:#ffc;
     display:block;
-    height:11.5em;
-    width:10em;
+    height:180px;
+    width:200px;
+    padding-top: 0;
     padding:1em;
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
     transform: rotate(-6deg);
@@ -121,73 +142,145 @@ body{
     
 }
 #form>input{
-width: 500px;
+width: 440px;
 
 }
 #form>select{
-    width: 500px;
+    width: 440px;
     }
 
-    .button{
-        position:relative;
-        display:inline-block;
-        margin: 15px;
-        height: 50px;
-      }
-      
-      #buttonid{
-        color:white;
-        font-family:Helvetica, sans-serif;
-        font-weight:bold;
-        font-size:36px;
-        text-align: center;
-        text-decoration:none;
-        background-color:#60c952;
-        display:block;
-        position:relative;
-        
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        text-shadow: 0px 1px 0px #000;
-        filter: dropshadow(color=#000, offx=0px, offy=1px);
-        
-        -webkit-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
-        -moz-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
-        box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
-        
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-      }
-      
-      #buttonid:active{
-        top:10px;
-        background-color:#F78900;
-        
-        -webkit-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
-        -moz-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3pxpx 0 #915100;
-        box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
-      }
-      
-      .button:after{
-        content:"";
-        height:100%;
-        width:100%;
-        padding:4px;
-        position: absolute;
-        bottom:-15px;
-        left:-4px;
-        z-index:-1;
-        background-color:#2B1800;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-      }
+.button{
+  position:relative;
+  display:inline-block;
+  height: 50px;
+  left: 25%;
+}
 
-      select:required:invalid {
-        color: #666;
-      }
-      option[value=""][disabled] {
-        display: none;
-      }
+#buttonid{
+  color:white;
+  font-family:var(--ff-secondary);
+  font-weight:bold;
+  font-size:28px;
+  text-align: center;
+  background-color:#60c952;
+  display:block;
+  position:relative;
+  margin-top: 30px;
+  
+  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-shadow: 0px 1px 0px #000;
+  filter: dropshadow(color=#000, offx=0px, offy=1px);
+  
+  -webkit-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+  -moz-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+  box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+  
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
 
- 
+#buttonid:active{
+  top:10px;
+  background-color:#F78900;
+  
+  -webkit-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+  -moz-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3pxpx 0 #915100;
+  box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+}
+
+.button:after{
+  content:"";
+  height:100%;
+  width:100%;
+  padding:4px;
+  position: absolute;
+  bottom:-15px;
+  left:-4px;
+  z-index:-1;
+  background-color:#2B1800;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+select:required:invalid {
+  color: #666;
+}
+option[value=""][disabled] {
+  display: none;
+}
+
+ /* flag */
+ .contain-flag {
+  position: relative;
+  margin-left: 40%;
+  margin-top: 70px;
+}
+
+.pole {
+  background-color: gray;
+  border: 1px solid #636262;
+  border-radius: 10px;
+  width: 10px;
+  height: 300px;
+}
+
+.pole:before {
+  position: absolute;
+  top: -14px;
+  left: -5px;
+  display: block;
+  background-color: gray;
+  border-radius: 50%;
+  border: 1px solid #636262;
+  width: 20px;
+  height: 20px;
+  content: "";
+}
+
+.flag {
+  position: absolute;
+  top: 8px;
+  z-index: 10;
+  background-color: #eb573b;
+  border: 1px solid #d64b38;
+  width: 150px;
+  height: 90px;
+}
+
+.shadow {
+  position: absolute;
+  top: 70px;
+  left: 90px;
+  z-index: 4;
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 32px solid transparent;
+  border-left: 62px solid #c14333;
+}
+
+.flag-2 {
+  position: absolute;
+  top: 40px;
+  left: 90px;
+  z-index: 1;
+  background-color: #eb573b;
+  width: 150px;
+  height: 90px;
+}
+
+.flag-2:after {
+  position: absolute;
+  left: 100px;
+  top: -15px;
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-right: 60px solid #c4edf7;
+  content: "";
+}
