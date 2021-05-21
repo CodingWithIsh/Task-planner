@@ -4,20 +4,15 @@
 // let form = document.getElementById("form");
 // let error1 = document.getElementById("error");
 if(!localStorage.getItem("submittedTasks")){
-    localStorage.setItem("submittedTasks","[]")
+    localStorage.setItem("submittedTasks","{}")
     localStorage.setItem("IDs","0")
 }
-
-
-// updatelocalstorage() {
-//     localStorage.setItem("cardsList",JSON.stringify(TaskManager.cardsList))
-//     localStorage.setItem("cardIds",JSON.stringify(TaskManager.cardIds))
-// }
-
 let tasks = JSON.parse(localStorage.getItem("submittedTasks"));
 let taskNumber = JSON.parse(localStorage.getItem("IDs"));
-let postits = 0
-// let TaskManager = {}
+let postits = 1
+displayAll(tasks)
+    
+
 
 class TaskClass {
     constructor(name, description, date, assignedTo, status) {
@@ -32,13 +27,12 @@ class TaskClass {
 }
 
 function deleteTask(taskId){
-    document.getElementById(taskId).remove()
-
-    
+    delete tasks[taskId]
+    updateLocalStorage()
+    displayAll(tasks)
 }
 
-function fillPostItNote(task){
-    postits++
+function fillPostItNote(task, postits){
     let postItNote = document.createElement("li")
     postItNote.id = task.id
     console.log(postItNote)
@@ -74,13 +68,9 @@ function updateLocalStorage(){
     localStorage.setItem('IDs', JSON.stringify(taskNumber))
 }
 
-this.tasks
-
-let valid = false
-
 function validateForm() {
 
-  }
+}
 
 function clearAllInputs(){
     for(let inputkey in inputs){
@@ -94,6 +84,8 @@ function add(){
     let assignedTo = document.getElementById("Assigned").value;
     let date = document.getElementById("dueDate").value;
     let status = document.getElementById("Status").value;
+    // getting tasks, and checking length
+    
     if(postits>18){
       alert("no more notes")
     } else if((name == "") || (name.length>20) || (description=="") || (description.length<20) || (assignedTo=="")|| (assignedTo.length>20) || (date.length<10) || (status=="") ) {
@@ -101,17 +93,23 @@ function add(){
     } else {
         taskNumber ++
         let task = new TaskClass(name, description, date, assignedTo, status);
-        tasks.push(task)
-        updateLocalStorage()
-        localStorage.setItem("submittedTasks", JSON.stringify(tasks));
-        fillPostItNote(task)
+        tasks[taskNumber] = task
+        updateLocalStorage() 
+        displayAll(tasks)
+        
     }
-
-
 }
 
-for(task of tasks){
-    fillPostItNote(task)
+function displayAll(tasks){
+    document.getElementById("stickynotes").innerHTML = ""
+    document.getElementById("stickynotes2").innerHTML = ""
+    document.getElementById("stickynotes3").innerHTML = ""
+    
+    let postits = 1
+    for (let key in tasks){
+         fillPostItNote(tasks[key], postits)
+         postits++
+    }
 }
 
 
@@ -161,9 +159,3 @@ for(task of tasks){
 //     TaskManager.cardIds = JSON.parse(cardIdsStorage)
 //     TaskManager.add()
 // }
-
-function myfun() {
-    
-    submittedTasks.splice(this.id, 1);     
-
-}
