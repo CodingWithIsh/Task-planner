@@ -36,6 +36,8 @@ class Task {
       document.getElementById("stickynotes").appendChild(postItNote);
     
     }
+
+    
 }
 
 function add(){
@@ -53,6 +55,7 @@ function add(){
     task.fillPostItNote()
     taskNumber ++
 }
+
 
 // function fillPostItNote(){
 //     let postItNote = document.createElement("div")
