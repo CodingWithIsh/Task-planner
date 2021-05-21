@@ -38,13 +38,13 @@ function fillPostItNote(task, postits){
     console.log(postItNote)
     postItNote.innerHTML = `              
         <a href="#" contenteditable>
-        <h2>Task ${postits}</h2>
+        <button style=" position: absolute; margin-left: 150px;  background:transparent; width:30px; border-color:transparent;"onclick="deleteTask(${task.id})"><img src="redx.png" style="width:100%;"></button>
+        <h2>Task ${postits}</h2>  
         <p>Name: ${task.name}<br>
         Due date: ${task.duedate}<br>
         Assigned to: ${task.assigned}<br>
         Status: ${task.taskStatus}<br></p>
         <p id="desc">Description: ${task.description}</p>
-        <button onclick="deleteTask(${task.id})"></button>
         </a>
     `
 
