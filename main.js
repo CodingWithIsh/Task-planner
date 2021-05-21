@@ -122,9 +122,12 @@ function updateLocalStorage(){
 }
 
 function clearAllTasks() {
-    localStorage.clear()
+    counter = 1
     document.getElementById("stickynotes").innerHTML = ""
     document.getElementById("stickynotes2").innerHTML = ""
+    localStorage.clear()
+    tasks = {}
+    tas
 }
 
 function clearAllInputs(){
